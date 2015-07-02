@@ -1,0 +1,39 @@
+<h1>Devise Issue</h1>
+
+<h3>Request</h3>
+<pre>
+Started POST "/api/users" for 127.0.0.1 at 2015-07-02 16:54:23 +0300
+Processing by Api::Users::RegistrationsController#create as JSON
+  Parameters: {"user"=>{"email"=>"mymail@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+   (0.1ms)  BEGIN
+   (0.1ms)  ROLLBACK
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+</pre>
+
+<h3>Response</h3>
+<pre>
+{
+  "errors": {
+    "email": [
+      "can't be blank"
+    ],
+    "password": [
+      "can't be blank"
+    ]
+  }
+}
+</pre>
+<h3>POSTMAN settings</h3>
+<pre>
+  url: http://localhost:3000/api/users
+  request_type: POST
+</pre>
+<h3>Headers</h3>
+  <pre>
+  Accept: application/json
+  x-Csrf-Token: 6m6HP9XleMhAl3WA46KWjD0dtiMMlAdOZPLHmcGrm6hv2+Yf78FpcD0nR0uJrlWVSW/24VRWz0opWPwc2/DK7Q==
+  </pre>
+
+
+x-Csrf-Token - taken from browser with js: <br>
+<pre>$('meta[name="csrf-token"]').attr('content')</pre>
